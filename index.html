@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First Feasts - Baby Weaning Recipes</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+    <header>
+        <img src="./images/First Feastst.png" alt="First Feasts Logo" class="logo">
+        <h1>First Feasts</h1>
+        <button id="darkModeToggle">🌙</button>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About Us</a></li>
+                <li><a href="#explore">Explore</a></li>
+                <li><a href="#popular">Popular Recipes</a></li>
+                <li><a href="#find">Find Recipes</a></li>
+                <li><a href="#meal-planner">Meal Planner</a></li>
+                <li><a href="#favorites">Favorites</a></li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="home" class="section active">
+            <h2>Welcome to First Feasts</h2>
+            <p>Your go-to platform for baby-led weaning recipes!</p>
+        </section>
+        
+        <section id="about" class="section">
+            <h2>About Us</h2>
+            <p>First Feasts is designed to introduce babies to solid foods through the Baby-Led Weaning (BLW) approach, empowering them to explore textures, tastes, and the joy of eating independently. This guide is perfect for parents who want to offer their baby a natural transition from milk to solids, focusing on family-style meals and whole foods that babies can hold and feed themselves.</p>
+        </section>
+        
+        <section id="explore" class="section">
+            <h2>Explore Recipes</h2>
+            <div id="recipe-list">
+                <article class="recipe">
+                    <h3>Mashed Banana & Avocado</h3>
+                    <img src="./images/avocado-baby-food-6-of-2020.jpg" alt="Mashed Banana & Avocado">
+                    <p><strong>Ingredients:</strong> 1 ripe banana, 1 ripe avocado</p>
+                    <p><strong>Instructions:</strong> Mash both together until smooth and serve.</p>
+                </article>
+                <article class="recipe">
+                    <h3>Sweet Potato Puree</h3>
+                    <img src="./images/sweet_potato_baby_food_puree.jpg" alt="Sweet Potato Puree">
+                    <p><strong>Ingredients:</strong> 1 sweet potato, water</p>
+                    <p><strong>Instructions:</strong> Boil sweet potato until soft, blend with a little water.</p>
+                </article>
+                <article class="recipe">
+                    <h3>Oatmeal with Apples</h3>
+                    <img src="./images/Apple-Banana-Oatmeal-2-1-1024x768.jpg" alt="Oatmeal with Apples">
+                    <p><strong>Ingredients:</strong> 1/4 cup oats, 1/2 apple (grated), water</p>
+                    <p><strong>Instructions:</strong> Cook oats with water, stir in grated apple.</p>
+                </article>
+                <article class="recipe">
+                    <h3>Carrot & Lentil Mash</h3>
+                    <img src="./images/red-lentil-carrot-baby-food3-1024x768.jpg" alt="Carrot & Lentil Mash">
+                    <p><strong>Ingredients:</strong> 1 carrot (chopped), 1/4 cup lentils, water</p>
+                    <p><strong>Instructions:</strong> Boil until soft, mash together.</p>
+                </article>
+                <article class="recipe">
+                    <h3>Chicken & Pea Puree</h3>
+                    <img src="./images/chicken_baby_food_puree-7.jpg" alt="Chicken & Pea Puree">
+                    <p><strong>Ingredients:</strong> 1/2 cup cooked chicken, 1/2 cup peas, water</p>
+                    <p><strong>Instructions:</strong> Blend with a little water until smooth.</p>
+                </article>
+                <article class="recipe">
+                    <h3>Salmon & Sweet Potato Mash</h3>
+                    <img src="./images/Salmon-and-Sweet-Potato-Baby-Food__1.webp" alt="Salmon & Sweet Potato Mash">
+                    <p><strong>Ingredients:</strong> 1 small piece of cooked salmon, 1/2 sweet potato</p>
+                    <p><strong>Instructions:</strong> Mash together and serve.</p>
+                </article>
+                <article class="recipe">
+                    <h3>Spinach & Potato Puree</h3>
+                    <img src="./images/Spinach and poatoes puree.jpg" alt="Spinach & Potato Puree">
+                    <p><strong>Ingredients:</strong> 1/2 cup spinach, 1 small potato</p>
+                    <p><strong>Instructions:</strong> Steam both, then blend with water.</p>
+                </article>
+            </div>
+        </section>
+        
+        <section id="popular" class="section">
+            <h2>Popular Recipes</h2>
+            <p>Discover the most loved baby-friendly meals!</p>
+        </section>
+        
+        <section id="find" class="section">
+            <h2>Find a Recipe</h2>
+            <input type="text" id="searchInput" placeholder="Search for an ingredient...">
+            <button id="searchBtn">Search</button>
+            <button id="voiceSearchBtn">🎤 Voice Search</button>
+            <div id="results"></div>
+        </section>
+
+        <section id="meal-planner" class="section">
+            <h2>Meal Planner</h2>
+            <p>Plan your baby's meals for the week.</p>
+            <div id="mealPlan"></div>
+        </section>
+
+        <section id="favorites" class="section">
+            <h2>Favorites</h2>
+            <p>Your saved recipes will appear here.</p>
+            <div id="favorites-list"></div>
+        </section>
+    </main>
+    
+    <div id="recipe-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-btn">&times;</span>
+            <h2 id="modal-title"></h2>
+            <img id="modal-image" src="" alt="">
+            <p><strong>Ingredients:</strong></p>
+            <ul id="modal-ingredients"></ul>
+            <p><strong>Instructions:</strong></p>
+            <p id="modal-instructions"></p>
+            <button id="saveToFavorites">Save to Favorites</button>
+            <button id="removeFromFavorites">Remove from Favorites</button>
+        </div>
+    </div>
+    
+    <footer class="footer"> 
+        <div class="footer-content">
+            <div class="footer-logo">
+                <img src="./images/First Feastst.png" alt="First Feasts">
+            </div>
+            <nav class="footer-links">
+                <a href="#home">Home</a>
+                <a href="#about">About Us</a>
+                <a href="#explore">Explore</a>
+                <a href="#popular">Popular Recipes</a>
+                <a href="#find">Find Recipes</a>
+                <a href="#meal-planner">Meal Planner</a>
+                <a href="#favorites">Favorites</a>
+            </nav>
+            <p>&copy; 2025 First Feasts. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script src="./index.js"></script>
+</body>
+</html>

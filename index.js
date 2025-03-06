@@ -117,3 +117,97 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInput = document.getElementById('searchInput');
+    const searchBtn = document.getElementById('searchBtn');
+    const voiceSearchBtn = document.getElementById('voiceSearchBtn');
+    const resultsContainer = document.getElementById('results');
+
+    // Sample recipe data
+    const recipes = [
+        { name: 'Mashed Banana & Avocado', ingredients: ['banana', 'avocado'] },
+        { name: 'Sweet Potato Puree', ingredients: ['sweet potato'] },
+        { name: 'Oatmeal with Apples', ingredients: ['oats', 'apple'] },
+        { name: 'Carrot & Lentil Mash', ingredients: ['carrot', 'lentils'] },
+        { name: 'Chicken & Pea Puree', ingredients: ['chicken', 'peas'] },
+        { name: 'Salmon & Sweet Potato Mash', ingredients: ['salmon', 'sweet potato'] },
+        { name: 'Spinach & Potato Puree', ingredients: ['spinach', 'potato'] }
+    ];
+
+    // Function to display search results
+    const displayResults = (results) => {
+        resultsContainer.innerHTML = '';
+        if (results.length === 0) {
+            resultsContainer.innerHTML = '<p>No recipes found.</p>';
+        } else {
+            results.forEach(recipe => {
+                const recipeElement = document.createElement('div');
+                recipeElement.classList.add('recipe-result');
+                recipeElement.innerHTML = `<h3>${recipe.name}</h3><p>Ingredients: ${recipe.ingredients.join(', ')}</p>`;
+                resultsContainer.appendChild(recipeElement);
+            });
+        }
+    };
+
+    // Function to handle search
+    const handleSearch = () => {
+        const query = searchInput.value.trim().toLowerCase();
+        if (query === '') {
+            displayResults([]);
+            return;
+        }
+        const queryArray = query.split(' ');
+        const filteredRecipes = recipes.filter(recipe =>
+            queryArray.every(q =>
+                recipe.name.toLowerCase().includes(q) ||
+                recipe.ingredients.some(ingredient => ingredient.toLowerCase().includes(q))
+            )
+        );
+        displayResults(filteredRecipes);
+    };
+
+    // Event listener for search button
+    searchBtn.addEventListener('click', handleSearch);
+
+    // Event listener for Enter key on search input
+    searchInput.addEventListener('keypress', (e) => {
+        if (e.key === 'Enter') {
+            handleSearch();
+        }
+    });
+
+    // Voice search functionality
+    if ('webkitSpeechRecognition' in window) {
+        const recognition = new webkitSpeechRecognition();
+        recognition.continuous = false;
+        recognition.interimResults = false;
+        recognition.lang = 'en-US';
+
+        recognition.onstart = () => {
+            voiceSearchBtn.textContent = '🎤 Listening...';
+        };
+
+        recognition.onresult = (event) => {
+            const transcript = event.results[0][0].transcript;
+            searchInput.value = transcript;
+            handleSearch();
+        };
+
+        recognition.onerror = (event) => {
+            console.error('Speech recognition error:', event.error);
+        };
+
+        recognition.onend = () => {
+            voiceSearchBtn.textContent = '🎤 Voice Search';
+        };
+
+        voiceSearchBtn.addEventListener('click', () => {
+            recognition.start();
+        });
+    } else {
+        voiceSearchBtn.style.display = 'none';
+        console.warn('Speech recognition not supported in this browser.');
+    }
+});

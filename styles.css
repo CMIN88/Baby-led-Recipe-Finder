@@ -198,5 +198,56 @@ nav ul {
     width: 90%;
     max-width: 400px;
 }
+/* Container for the search elements */
+#find {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Styling the search input */
+#searchInput {
+    width: 80%;
+    max-width: 400px;
+    padding: 10px 15px;
+    margin: 10px 0;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 25px;
+    outline: none;
+    transition: border-color 0.3s;
+}
+
+#searchInput:focus {
+    border-color: #007BFF;
+}
+
+/* Styling the buttons */
+#searchBtn, #voiceSearchBtn {
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #007BFF;
+    border: none;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+#searchBtn:hover, #voiceSearchBtn:hover {
+    background-color: #0056b3;
+}
+
+/* Adding some spacing between the buttons */
+#buttonContainer {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+
 
 
